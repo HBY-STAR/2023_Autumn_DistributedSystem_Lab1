@@ -1,0 +1,33 @@
+module api {
+    typedef octet byteArray[4*1024];
+    struct file_meta {
+        boolean is_new;
+        long file_size;
+        long block_num;
+        long block_data_node[100];
+        long block_id[100];
+        string creat_time;
+        string modify_time;
+        string access_time;
+    };
+    interface DataNode {
+        byteArray read(in long block_id);
+        void append(in long block_id, in byteArray bytes);
+        long randomBlockId();
+    };
+    interface NameNode {
+    //TODO: complete the interface design
+        file_meta open(in string file_path, in long mode);
+        boolean close(in string file_path);
+        // 目录操作
+        boolean mk_dir(in string dir_path);
+        boolean del_dir(in string dir_path);
+        boolean change_dir(in string old_dir_path,in string new_dir_path);
+        boolean rename_dir(in string old_dir_name,in string new_dir_name);
+        // 文件操作
+        boolean mk_file(in string file_path);
+        boolean del_file(in string file_path);
+        boolean change_file(in string old_file_path,in string new_file_path);
+        boolean rename_file(in string old_file_name,in string new_file_name);
+    };
+};
