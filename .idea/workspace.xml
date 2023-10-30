@@ -4,50 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b16450a-76df-435d-9c77-afb10c6f459d" name="更改" comment="update api.idl">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/api/FileMetaHolder.java" afterDir="false" />
+    <list default="true" id="8b16450a-76df-435d-9c77-afb10c6f459d" name="更改" comment="design: nameNode &amp; dataNode">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode1/NodeMeta1" beforeDir="false" afterPath="$PROJECT_DIR$/DataNodeFile/DataNode0/NodeMeta0.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode10/NodeMeta10" beforeDir="false" afterPath="$PROJECT_DIR$/DataNodeFile/DataNode1/NodeMeta1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode2/NodeMeta2" beforeDir="false" afterPath="$PROJECT_DIR$/DataNodeFile/DataNode2/NodeMeta2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode3/NodeMeta3" beforeDir="false" afterPath="$PROJECT_DIR$/DataNodeFile/DataNode3/NodeMeta3.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode4/NodeMeta4" beforeDir="false" afterPath="$PROJECT_DIR$/DataNodeFile/DataNode4/NodeMeta4.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode5/NodeMeta5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode6/NodeMeta6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode7/NodeMeta7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode8/NodeMeta8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode9/NodeMeta9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api.idl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api.idl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/DataNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/DataNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/DataNodeHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/DataNodeHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/DataNodeHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/DataNodeHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/DataNodeOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/DataNodeOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/DataNodePOA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/DataNodePOA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/NameNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NameNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/NameNodeHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NameNodeHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/NameNodeHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NameNodeHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/NameNodeOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NameNodeOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/NameNodePOA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NameNodePOA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/_DataNodeStub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/_DataNodeStub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/_NameNodeStub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/_NameNodeStub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/byteArrayHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/byteArrayHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/byteArrayHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/byteArrayHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/file_meta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/FileMeta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/file_metaHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/FileMetaHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/file_metaHolder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ClientShell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ClientShell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/DataNodeImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/DataNodeImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/NameNodeImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/NameNodeImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/DataNodeLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/DataNodeLauncher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/NameNodeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/NameNodeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/NameNodeMetaFileNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/NameNodeMetaFileNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/NameNodeMetaFileTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/NameNodeMetaFileTree.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,31 +36,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "last_opened_file_path": "C:/Users/21714/Desktop/Code/SoftwareDesign/lab1/lab1-21302010042-侯斌洋/SoftwareDesignLab1",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "模块",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.55402297",
-    "settings.editor.selected.configurable": "terminal",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/21714/Desktop/Code/DistributedSystem/lab/DistributedSystemLab1/lab1&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.55402297&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="api" />
@@ -220,7 +180,9 @@
       <workItem from="1698575229741" duration="2967000" />
       <workItem from="1698630529535" duration="1812000" />
       <workItem from="1698637051629" duration="902000" />
-      <workItem from="1698644932510" duration="11586000" />
+      <workItem from="1698644932510" duration="11745000" />
+      <workItem from="1698661084775" duration="207000" />
+      <workItem from="1698675262504" duration="4016000" />
     </task>
     <task id="LOCAL-00001" summary="generate">
       <created>1698042774448</created>
@@ -236,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698575635962</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="design: nameNode &amp; dataNode">
+      <created>1698659712087</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698659712087</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -251,7 +220,8 @@
     <MESSAGE value="generate" />
     <MESSAGE value="tree" />
     <MESSAGE value="update api.idl" />
-    <option name="LAST_COMMIT_MESSAGE" value="update api.idl" />
+    <MESSAGE value="design: nameNode &amp; dataNode" />
+    <option name="LAST_COMMIT_MESSAGE" value="design: nameNode &amp; dataNode" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

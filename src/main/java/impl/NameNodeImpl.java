@@ -14,7 +14,8 @@ public class NameNodeImpl extends NameNodePOA {
     private static final String fs_meta_path = "NameNodeFile/NameNodeMeta";
     private final NameNodeMetaFileTree tree = new NameNodeMetaFileTree(fs_meta_path);
     public static final int MAX_DATA_NODE = 5;
-    private static DataNode[] dataNodes = new DataNode[MAX_DATA_NODE];
+    private static final DataNode[] dataNodes = new DataNode[MAX_DATA_NODE];
+    private static boolean dataNodes_get = false;
     @Override
     public FileMeta open(String filepath, int mode) {
         NameNodeMetaFileNode findNode = getNameNodeMetaFileNode(filepath);
@@ -125,14 +126,14 @@ public class NameNodeImpl extends NameNodePOA {
 
     @Override
     public boolean del_dir(String dir_path) {
-        NameNodeMetaFileNode findNode = getNameNodeMetaFileNodeDir(dir_path);
+        NameNodeMetaFileNode findNode = getNameNodeMetaFileNode(dir_path);
         //no such directory
         if(findNode==null){
             return false;
         }
         //directory exists
         else {
-            free(dir_path);
+            free(findNode);
             return tree.deleteNode(string_to_list(dir_path));
         }
     }
@@ -143,6 +144,7 @@ public class NameNodeImpl extends NameNodePOA {
         return false;
     }
 
+    //TODO
     @Override
     public boolean rename_dir(String old_dir_path, String new_dir_name) {
         NameNodeMetaFileNode oldNode = getNameNodeMetaFileNode(old_dir_path);
@@ -177,7 +179,7 @@ public class NameNodeImpl extends NameNodePOA {
         NameNodeMetaFileNode findNode = getNameNodeMetaFileNode(file_path);
         //file exists
         if(findNode!=null){
-            free(file_path);
+            free(findNode);
             return tree.deleteNode(string_to_list(file_path));
         }
         //no such file
@@ -186,9 +188,18 @@ public class NameNodeImpl extends NameNodePOA {
         }
     }
 
-    //TODO
     @Override
     public boolean change_file(String old_file_path, String new_file_path) {
+        NameNodeMetaFileNode oldNode = getNameNodeMetaFileNode(old_file_path);
+        if(oldNode!=null){
+            NameNodeMetaFileNode findNewDir = getNameNodeMetaFileNodeDir(new_file_path);
+            if(findNewDir!=null){
+                NameNodeMetaFileNode findOldDir = getNameNodeMetaFileNodeDir(old_file_path);
+                findOldDir.children.remove(oldNode);
+                oldNode.path = string_to_list(new_file_path);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -221,17 +232,38 @@ public class NameNodeImpl extends NameNodePOA {
         return false;
     }
 
-    //TODO
     //寻找空闲最多的dataNode，分配空间
     private int [] alloc(){
-        int [] new_block;
-
-        return new int[]{0, 0};
+        GetDataNode();
+        int [] new_block = new int[]{0,0};
+        int max_free_node=0;
+        int max_free_size=0;
+        for(int i=0;i<MAX_DATA_NODE;i++){
+            int free_size = dataNodes[i].check_free_size();
+            if(free_size>max_free_size){
+                max_free_size=free_size;
+                max_free_node=i;
+            }
+        }
+        new_block[0] = max_free_node;
+        new_block[1] = dataNodes[max_free_node].alloc();
+        return new_block;
     }
 
-    //TODO
     //释放当前节点及其子节点下的dataNode空间
-    private void free(String dir_path){
+    private void free(NameNodeMetaFileNode start_node){
+        GetDataNode();
+        if(start_node!=null){
+            if(start_node.is_file){
+                for(int i=0;i<start_node.data.block_num;i++){
+                    dataNodes[start_node.data.block_data_node[i]].free(start_node.data.block_id[i]);
+                }
+            }else {
+                for (NameNodeMetaFileNode child : start_node.children){
+                    free(child);
+                }
+            }
+        }
     }
 
     private NameNodeMetaFileNode getNameNodeMetaFileNode(String filepath) {
@@ -259,19 +291,22 @@ public class NameNodeImpl extends NameNodePOA {
 
     private static void GetDataNode(){
         try {
-            Properties properties = new Properties();
-            properties.put("org.omg.CORBA.ORBInitialHost","127.0.0.1");
-            properties.put("org.omg.CORBA.ORBInitialPort","15000");
+            if(!dataNodes_get){
+                Properties properties = new Properties();
+                properties.put("org.omg.CORBA.ORBInitialHost","127.0.0.1");
+                properties.put("org.omg.CORBA.ORBInitialPort","15000");
 
-            ORB orb = ORB.init((String[]) null,properties);
+                ORB orb = ORB.init((String[]) null,properties);
 
-            org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
-            NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
+                org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
+                NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
 
-            for(int dataNodeId = 0;dataNodeId<MAX_DATA_NODE;dataNodeId++){
-                dataNodes[dataNodeId] = DataNodeHelper.narrow(ncRef.resolve_str("DataNode"+dataNodeId));
-                System.out.println("DataNode"+dataNodeId+" is obtained");
+                for(int dataNodeId = 0;dataNodeId<MAX_DATA_NODE;dataNodeId++){
+                    dataNodes[dataNodeId] = DataNodeHelper.narrow(ncRef.resolve_str("DataNode"+dataNodeId));
+                    System.out.println("DataNode"+dataNodeId+" is obtained");
+                }
             }
+            dataNodes_get=true;
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -16,6 +16,7 @@ public class DataNodeImpl extends DataNodePOA {
     private static final int BLOCK_SIZE = 4096;
     private int dateNodeId;
     private static NameNode nameNode;
+    private static boolean nameNode_get=false;
     private final String data_node_meta_path = "DataNodeFile/DataNode"+dateNodeId+"/NodeMeta"+dateNodeId+".json";
     private final String data_node_block_dir_path = "DataNodeFile/DataNode"+dateNodeId;
     private boolean [] block_used = new boolean[MAX_BLOCK_NUM];
@@ -31,7 +32,13 @@ public class DataNodeImpl extends DataNodePOA {
 
     @Override
     public int check_free_size() {
-        return 0;
+        int count_free=0;
+        for(int i=0;i<MAX_BLOCK_NUM;i++){
+            if(!block_used[i]){
+                count_free++;
+            }
+        }
+        return count_free;
     }
 
     @Override
@@ -46,17 +53,20 @@ public class DataNodeImpl extends DataNodePOA {
 
     private static void GetNameNode(){
         try {
-            Properties properties = new Properties();
-            properties.put("org.omg.CORBA.ORBInitialHost","127.0.0.1");
-            properties.put("org.omg.CORBA.ORBInitialPort","15000");
+            if(!nameNode_get){
+                Properties properties = new Properties();
+                properties.put("org.omg.CORBA.ORBInitialHost","127.0.0.1");
+                properties.put("org.omg.CORBA.ORBInitialPort","15000");
 
-            ORB orb = ORB.init((String[]) null,properties);
+                ORB orb = ORB.init((String[]) null,properties);
 
-            org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
-            NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
+                org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
+                NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
 
-            nameNode = NameNodeHelper.narrow(ncRef.resolve_str("NameNode"));
-            System.out.println("NameNode is obtained");
+                nameNode = NameNodeHelper.narrow(ncRef.resolve_str("NameNode"));
+                System.out.println("NameNode is obtained");
+            }
+            nameNode_get=true;
         }catch (Exception e){
             e.printStackTrace();
         }
