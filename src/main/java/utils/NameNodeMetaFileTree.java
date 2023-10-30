@@ -2,6 +2,7 @@ package utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.io.File;
@@ -12,7 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class NameNodeMetaFileTree {
-    private static NameNodeMetaFileNode root = null;
+    public static NameNodeMetaFileNode root = null;
     private String meta_file_path = null;
 
     public NameNodeMetaFileTree(String meta_file_path){
@@ -26,9 +27,14 @@ public class NameNodeMetaFileTree {
             // 从JSON文件读取对象
             File check = new File(meta_file_path);
             if(!check.exists()){
-                check.createNewFile();
-                System.out.println("Create New File");
-                return true;
+                if(check.createNewFile()){
+                    System.out.println("Create New File");
+                    return true;
+                }
+                else {
+                    System.out.println("Create new file failed");
+                    return false;
+                }
             }
             root = mapper.readValue(new File(meta_file_path), NameNodeMetaFileNode.class);
             return true;
@@ -131,6 +137,12 @@ public class NameNodeMetaFileTree {
             return findNode(cur_exist_node, path.subList(1,path.size() - 1));
         } else {
             return null;
+        }
+    }
+
+    public void test_and_set_tree(){
+        if(root==null){
+            loadTree();
         }
     }
 }

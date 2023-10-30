@@ -44,6 +44,7 @@ public class DataNodeLauncher {
             rootpoa.the_POAManager().activate();
 
             DataNodeImpl dataNodeServant = new DataNodeImpl();
+            dataNodeServant.setDateNodeId(dataNodeId);
 
             org.omg.CORBA.Object ref = rootpoa.servant_to_reference(dataNodeServant);
             DataNode href = DataNodeHelper.narrow(ref);

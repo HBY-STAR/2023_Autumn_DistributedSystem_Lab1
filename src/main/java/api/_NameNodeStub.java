@@ -1,11 +1,19 @@
 package api;
 
+
+/**
+* api/_NameNodeStub.java .
+* 由IDL-to-Java 编译器 (可移植), 版本 "3.2"生成
+* 从api.idl
+* 2023年10月30日 星期一 下午05时31分59秒 CST
+*/
+
 public class _NameNodeStub extends org.omg.CORBA.portable.ObjectImpl implements api.NameNode
 {
 
 
-  //TODO: complete the interface design
-  public api.file_meta open (String file_path, int mode)
+  // from Client
+  public api.FileMeta open (String file_path, int mode)
   {
             org.omg.CORBA.portable.InputStream $in = null;
             try {
@@ -13,7 +21,7 @@ public class _NameNodeStub extends org.omg.CORBA.portable.ObjectImpl implements 
                 $out.write_string (file_path);
                 $out.write_long (mode);
                 $in = _invoke ($out);
-                api.file_meta $result = api.file_metaHelper.read ($in);
+                api.FileMeta $result = api.FileMetaHelper.read ($in);
                 return $result;
             } catch (org.omg.CORBA.portable.ApplicationException $ex) {
                 $in = $ex.getInputStream ();
@@ -26,12 +34,13 @@ public class _NameNodeStub extends org.omg.CORBA.portable.ObjectImpl implements 
             }
   } // open
 
-  public boolean close (String file_path)
+  public boolean close (String file_path, int writing_cookie)
   {
             org.omg.CORBA.portable.InputStream $in = null;
             try {
                 org.omg.CORBA.portable.OutputStream $out = _request ("close", true);
                 $out.write_string (file_path);
+                $out.write_long (writing_cookie);
                 $in = _invoke ($out);
                 boolean $result = $in.read_boolean ();
                 return $result;
@@ -40,7 +49,7 @@ public class _NameNodeStub extends org.omg.CORBA.portable.ObjectImpl implements 
                 String _id = $ex.getId ();
                 throw new org.omg.CORBA.MARSHAL (_id);
             } catch (org.omg.CORBA.portable.RemarshalException $rm) {
-                return close (file_path        );
+                return close (file_path, writing_cookie        );
             } finally {
                 _releaseReply ($in);
             }
@@ -109,12 +118,12 @@ public class _NameNodeStub extends org.omg.CORBA.portable.ObjectImpl implements 
             }
   } // change_dir
 
-  public boolean rename_dir (String old_dir_name, String new_dir_name)
+  public boolean rename_dir (String old_dir_path, String new_dir_name)
   {
             org.omg.CORBA.portable.InputStream $in = null;
             try {
                 org.omg.CORBA.portable.OutputStream $out = _request ("rename_dir", true);
-                $out.write_string (old_dir_name);
+                $out.write_string (old_dir_path);
                 $out.write_string (new_dir_name);
                 $in = _invoke ($out);
                 boolean $result = $in.read_boolean ();
@@ -124,7 +133,7 @@ public class _NameNodeStub extends org.omg.CORBA.portable.ObjectImpl implements 
                 String _id = $ex.getId ();
                 throw new org.omg.CORBA.MARSHAL (_id);
             } catch (org.omg.CORBA.portable.RemarshalException $rm) {
-                return rename_dir (old_dir_name, new_dir_name        );
+                return rename_dir (old_dir_path, new_dir_name        );
             } finally {
                 _releaseReply ($in);
             }
@@ -193,12 +202,12 @@ public class _NameNodeStub extends org.omg.CORBA.portable.ObjectImpl implements 
             }
   } // change_file
 
-  public boolean rename_file (String old_file_name, String new_file_name)
+  public boolean rename_file (String old_file_path, String new_file_name)
   {
             org.omg.CORBA.portable.InputStream $in = null;
             try {
                 org.omg.CORBA.portable.OutputStream $out = _request ("rename_file", true);
-                $out.write_string (old_file_name);
+                $out.write_string (old_file_path);
                 $out.write_string (new_file_name);
                 $in = _invoke ($out);
                 boolean $result = $in.read_boolean ();
@@ -208,11 +217,36 @@ public class _NameNodeStub extends org.omg.CORBA.portable.ObjectImpl implements 
                 String _id = $ex.getId ();
                 throw new org.omg.CORBA.MARSHAL (_id);
             } catch (org.omg.CORBA.portable.RemarshalException $rm) {
-                return rename_file (old_file_name, new_file_name        );
+                return rename_file (old_file_path, new_file_name        );
             } finally {
                 _releaseReply ($in);
             }
   } // rename_file
+
+
+  // from DataNode
+  public boolean file_increase (String file_path, int block_data_node, int block_id, int free_size)
+  {
+            org.omg.CORBA.portable.InputStream $in = null;
+            try {
+                org.omg.CORBA.portable.OutputStream $out = _request ("file_increase", true);
+                $out.write_string (file_path);
+                $out.write_long (block_data_node);
+                $out.write_long (block_id);
+                $out.write_long (free_size);
+                $in = _invoke ($out);
+                boolean $result = $in.read_boolean ();
+                return $result;
+            } catch (org.omg.CORBA.portable.ApplicationException $ex) {
+                $in = $ex.getInputStream ();
+                String _id = $ex.getId ();
+                throw new org.omg.CORBA.MARSHAL (_id);
+            } catch (org.omg.CORBA.portable.RemarshalException $rm) {
+                return file_increase (file_path, block_data_node, block_id, free_size        );
+            } finally {
+                _releaseReply ($in);
+            }
+  } // file_increase
 
   // Type-specific CORBA::Object operations
   private static String[] __ids = {

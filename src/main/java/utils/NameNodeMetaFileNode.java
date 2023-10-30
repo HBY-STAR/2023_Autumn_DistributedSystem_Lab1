@@ -1,6 +1,6 @@
 package utils;
 
-import api.file_meta;
+import api.FileMeta;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class NameNodeMetaFileNode {
-    public file_meta data;
+    public FileMeta data;
     public List<String> path;
     public boolean is_file;
     //    private int nodeId;

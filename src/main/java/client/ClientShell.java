@@ -4,25 +4,19 @@ import api.DataNode;
 import api.DataNodeHelper;
 import api.NameNode;
 import api.NameNodeHelper;
-import impl.NameNodeImpl;
 import org.omg.CORBA.ORB;
-import org.omg.CosNaming.NameComponent;
 import org.omg.CosNaming.NamingContextExt;
 import org.omg.CosNaming.NamingContextExtHelper;
-import org.omg.PortableServer.POA;
-import org.omg.PortableServer.POAHelper;
 
 import java.util.Properties;
 
 public class ClientShell {
-    public static final int MAX_DATA_NODE = 10;
+    public static final int MAX_DATA_NODE = 5;
     private static NameNode nameNode;
-    private static DataNode[] dataNodes = new DataNode[MAX_DATA_NODE];
+    private static final DataNode[] dataNodes = new DataNode[MAX_DATA_NODE];
 
     public static void main(String[] args) {
         GetNameNodeAndDataNode(args);
-        nameNode.open("ok",1);
-        dataNodes[0].read(0);
     }
 
     private static void GetNameNodeAndDataNode(String[] args) {

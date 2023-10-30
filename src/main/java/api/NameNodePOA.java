@@ -1,5 +1,13 @@
 package api;
 
+
+/**
+* api/NameNodePOA.java .
+* 由IDL-to-Java 编译器 (可移植), 版本 "3.2"生成
+* 从api.idl
+* 2023年10月30日 星期一 下午05时31分59秒 CST
+*/
+
 public abstract class NameNodePOA extends org.omg.PortableServer.Servant
  implements api.NameNodeOperations, org.omg.CORBA.portable.InvokeHandler
 {
@@ -19,6 +27,7 @@ public abstract class NameNodePOA extends org.omg.PortableServer.Servant
     _methods.put ("del_file", new java.lang.Integer (7));
     _methods.put ("change_file", new java.lang.Integer (8));
     _methods.put ("rename_file", new java.lang.Integer (9));
+    _methods.put ("file_increase", new java.lang.Integer (10));
   }
 
   public org.omg.CORBA.portable.OutputStream _invoke (String $method,
@@ -33,23 +42,24 @@ public abstract class NameNodePOA extends org.omg.PortableServer.Servant
     switch (__method.intValue ())
     {
 
-  //TODO: complete the interface design
+  // from Client
        case 0:  // api/NameNode/open
        {
          String file_path = in.read_string ();
          int mode = in.read_long ();
-         api.file_meta $result = null;
+         api.FileMeta $result = null;
          $result = this.open (file_path, mode);
          out = $rh.createReply();
-         api.file_metaHelper.write (out, $result);
+         api.FileMetaHelper.write (out, $result);
          break;
        }
 
        case 1:  // api/NameNode/close
        {
          String file_path = in.read_string ();
+         int writing_cookie = in.read_long ();
          boolean $result = false;
-         $result = this.close (file_path);
+         $result = this.close (file_path, writing_cookie);
          out = $rh.createReply();
          out.write_boolean ($result);
          break;
@@ -90,10 +100,10 @@ public abstract class NameNodePOA extends org.omg.PortableServer.Servant
 
        case 5:  // api/NameNode/rename_dir
        {
-         String old_dir_name = in.read_string ();
+         String old_dir_path = in.read_string ();
          String new_dir_name = in.read_string ();
          boolean $result = false;
-         $result = this.rename_dir (old_dir_name, new_dir_name);
+         $result = this.rename_dir (old_dir_path, new_dir_name);
          out = $rh.createReply();
          out.write_boolean ($result);
          break;
@@ -134,10 +144,25 @@ public abstract class NameNodePOA extends org.omg.PortableServer.Servant
 
        case 9:  // api/NameNode/rename_file
        {
-         String old_file_name = in.read_string ();
+         String old_file_path = in.read_string ();
          String new_file_name = in.read_string ();
          boolean $result = false;
-         $result = this.rename_file (old_file_name, new_file_name);
+         $result = this.rename_file (old_file_path, new_file_name);
+         out = $rh.createReply();
+         out.write_boolean ($result);
+         break;
+       }
+
+
+  // from DataNode
+       case 10:  // api/NameNode/file_increase
+       {
+         String file_path = in.read_string ();
+         int block_data_node = in.read_long ();
+         int block_id = in.read_long ();
+         int free_size = in.read_long ();
+         boolean $result = false;
+         $result = this.file_increase (file_path, block_data_node, block_id, free_size);
          out = $rh.createReply();
          out.write_boolean ($result);
          break;

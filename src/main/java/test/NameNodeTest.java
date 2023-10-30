@@ -12,7 +12,7 @@ public class NameNodeTest {
     private static NameNodeImpl nn;
     private void close(FileDesc... fileInfos){
         for(FileDesc fileInfo: fileInfos){
-            nn.close(fileInfo.toString());
+            nn.close(fileInfo.toString(),0);
         }
     }
 

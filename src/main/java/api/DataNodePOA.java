@@ -1,5 +1,13 @@
 package api;
 
+
+/**
+* api/DataNodePOA.java .
+* 由IDL-to-Java 编译器 (可移植), 版本 "3.2"生成
+* 从api.idl
+* 2023年10月30日 星期一 下午05时31分59秒 CST
+*/
+
 public abstract class DataNodePOA extends org.omg.PortableServer.Servant
  implements api.DataNodeOperations, org.omg.CORBA.portable.InvokeHandler
 {
@@ -11,7 +19,9 @@ public abstract class DataNodePOA extends org.omg.PortableServer.Servant
   {
     _methods.put ("read", new java.lang.Integer (0));
     _methods.put ("append", new java.lang.Integer (1));
-    _methods.put ("randomBlockId", new java.lang.Integer (2));
+    _methods.put ("check_free_size", new java.lang.Integer (2));
+    _methods.put ("alloc", new java.lang.Integer (3));
+    _methods.put ("free", new java.lang.Integer (4));
   }
 
   public org.omg.CORBA.portable.OutputStream _invoke (String $method,
@@ -25,6 +35,8 @@ public abstract class DataNodePOA extends org.omg.PortableServer.Servant
 
     switch (__method.intValue ())
     {
+
+  // from Client
        case 0:  // api/DataNode/read
        {
          int block_id = in.read_long ();
@@ -44,12 +56,33 @@ public abstract class DataNodePOA extends org.omg.PortableServer.Servant
          break;
        }
 
-       case 2:  // api/DataNode/randomBlockId
+
+  // from NameNode
+       case 2:  // api/DataNode/check_free_size
        {
          int $result = (int)0;
-         $result = this.randomBlockId ();
+         $result = this.check_free_size ();
          out = $rh.createReply();
          out.write_long ($result);
+         break;
+       }
+
+       case 3:  // api/DataNode/alloc
+       {
+         int $result = (int)0;
+         $result = this.alloc ();
+         out = $rh.createReply();
+         out.write_long ($result);
+         break;
+       }
+
+       case 4:  // api/DataNode/free
+       {
+         int block_id = in.read_long ();
+         boolean $result = false;
+         $result = this.free (block_id);
+         out = $rh.createReply();
+         out.write_boolean ($result);
          break;
        }
 

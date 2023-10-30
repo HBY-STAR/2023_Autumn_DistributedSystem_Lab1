@@ -1,10 +1,25 @@
 package impl;
-//TODO: your implementation
-import api.DataNodePOA;
 
+import api.DataNodePOA;
+import api.NameNode;
+import api.NameNodeHelper;
+import lombok.Setter;
+import org.omg.CORBA.ORB;
+import org.omg.CosNaming.NamingContextExt;
+import org.omg.CosNaming.NamingContextExtHelper;
+
+import java.util.Properties;
+
+@Setter
 public class DataNodeImpl extends DataNodePOA {
-    private static final int MAX_BLOCK_NUM = 100;
+    private static final int MAX_BLOCK_NUM = 1000;
     private static final int BLOCK_SIZE = 4096;
+    private int dateNodeId;
+    private static NameNode nameNode;
+    private final String data_node_meta_path = "DataNodeFile/DataNode"+dateNodeId+"/NodeMeta"+dateNodeId+".json";
+    private final String data_node_block_dir_path = "DataNodeFile/DataNode"+dateNodeId;
+    private boolean [] block_used = new boolean[MAX_BLOCK_NUM];
+    private byte[] block = new byte[4096];
     @Override
     public byte[] read(int block_id) {
         return new byte[0];
@@ -15,9 +30,35 @@ public class DataNodeImpl extends DataNodePOA {
     }
 
     @Override
-    public int randomBlockId() {
+    public int check_free_size() {
         return 0;
     }
 
+    @Override
+    public int alloc() {
+        return 0;
+    }
 
+    @Override
+    public boolean free(int block_id) {
+        return false;
+    }
+
+    private static void GetNameNode(){
+        try {
+            Properties properties = new Properties();
+            properties.put("org.omg.CORBA.ORBInitialHost","127.0.0.1");
+            properties.put("org.omg.CORBA.ORBInitialPort","15000");
+
+            ORB orb = ORB.init((String[]) null,properties);
+
+            org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
+            NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
+
+            nameNode = NameNodeHelper.narrow(ncRef.resolve_str("NameNode"));
+            System.out.println("NameNode is obtained");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

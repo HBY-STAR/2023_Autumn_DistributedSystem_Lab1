@@ -1,8 +1,18 @@
 package api;
 
+
+/**
+* api/_DataNodeStub.java .
+* 由IDL-to-Java 编译器 (可移植), 版本 "3.2"生成
+* 从api.idl
+* 2023年10月30日 星期一 下午05时31分59秒 CST
+*/
+
 public class _DataNodeStub extends org.omg.CORBA.portable.ObjectImpl implements api.DataNode
 {
 
+
+  // from Client
   public byte[] read (int block_id)
   {
             org.omg.CORBA.portable.InputStream $in = null;
@@ -43,11 +53,13 @@ public class _DataNodeStub extends org.omg.CORBA.portable.ObjectImpl implements 
             }
   } // append
 
-  public int randomBlockId ()
+
+  // from NameNode
+  public int check_free_size ()
   {
             org.omg.CORBA.portable.InputStream $in = null;
             try {
-                org.omg.CORBA.portable.OutputStream $out = _request ("randomBlockId", true);
+                org.omg.CORBA.portable.OutputStream $out = _request ("check_free_size", true);
                 $in = _invoke ($out);
                 int $result = $in.read_long ();
                 return $result;
@@ -56,11 +68,50 @@ public class _DataNodeStub extends org.omg.CORBA.portable.ObjectImpl implements 
                 String _id = $ex.getId ();
                 throw new org.omg.CORBA.MARSHAL (_id);
             } catch (org.omg.CORBA.portable.RemarshalException $rm) {
-                return randomBlockId (        );
+                return check_free_size (        );
             } finally {
                 _releaseReply ($in);
             }
-  } // randomBlockId
+  } // check_free_size
+
+  public int alloc ()
+  {
+            org.omg.CORBA.portable.InputStream $in = null;
+            try {
+                org.omg.CORBA.portable.OutputStream $out = _request ("alloc", true);
+                $in = _invoke ($out);
+                int $result = $in.read_long ();
+                return $result;
+            } catch (org.omg.CORBA.portable.ApplicationException $ex) {
+                $in = $ex.getInputStream ();
+                String _id = $ex.getId ();
+                throw new org.omg.CORBA.MARSHAL (_id);
+            } catch (org.omg.CORBA.portable.RemarshalException $rm) {
+                return alloc (        );
+            } finally {
+                _releaseReply ($in);
+            }
+  } // alloc
+
+  public boolean free (int block_id)
+  {
+            org.omg.CORBA.portable.InputStream $in = null;
+            try {
+                org.omg.CORBA.portable.OutputStream $out = _request ("free", true);
+                $out.write_long (block_id);
+                $in = _invoke ($out);
+                boolean $result = $in.read_boolean ();
+                return $result;
+            } catch (org.omg.CORBA.portable.ApplicationException $ex) {
+                $in = $ex.getInputStream ();
+                String _id = $ex.getId ();
+                throw new org.omg.CORBA.MARSHAL (_id);
+            } catch (org.omg.CORBA.portable.RemarshalException $rm) {
+                return free (block_id        );
+            } finally {
+                _releaseReply ($in);
+            }
+  } // free
 
   // Type-specific CORBA::Object operations
   private static String[] __ids = {
