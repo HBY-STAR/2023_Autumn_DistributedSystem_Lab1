@@ -2,7 +2,6 @@ package utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.io.File;
@@ -134,7 +133,7 @@ public class NameNodeMetaFileTree {
             if(path.size()<2){
                 return cur_exist_node;
             }
-            return findNode(cur_exist_node, path.subList(1,path.size() - 1));
+            return findNode(cur_exist_node, path.subList(1,path.size()));
         } else {
             return null;
         }
@@ -150,7 +149,7 @@ public class NameNodeMetaFileTree {
         if(start_node==root){
             return;
         }
-        start_node.path.set(depth-1,new_name);
+        start_node.path.set(depth,new_name);
         for(NameNodeMetaFileNode child : start_node.children){
             renameNode(child,new_name,depth);
         }
