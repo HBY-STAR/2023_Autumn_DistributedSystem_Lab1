@@ -138,18 +138,28 @@ public class NameNodeImpl extends NameNodePOA {
         }
     }
 
-    //TODO
     @Override
     public boolean change_dir(String old_dir_path, String new_dir_path) {
+        NameNodeMetaFileNode oldNode = getNameNodeMetaFileNode(old_dir_path);
+        NameNodeMetaFileNode newDir =  getNameNodeMetaFileNode(new_dir_path);
+        if(oldNode!=null&&newDir!=null){
+            int depth = newDir.path.size()-1;
+            for(int i=0;i<depth;i++){
+                tree.renameNode(oldNode,newDir.path.get(i),i);
+            }
+            tree.addNode(oldNode);
+            tree.deleteNode(string_to_list(old_dir_path));
+            return true;
+        }
         return false;
     }
 
-    //TODO
     @Override
     public boolean rename_dir(String old_dir_path, String new_dir_name) {
         NameNodeMetaFileNode oldNode = getNameNodeMetaFileNode(old_dir_path);
         if(oldNode!=null){
-            oldNode.path.set(oldNode.path.size()-1,new_dir_name);
+            int depth = oldNode.path.size()-1;
+            tree.renameNode(oldNode,new_dir_name,depth);
             return true;
         }
         return false;
@@ -214,10 +224,10 @@ public class NameNodeImpl extends NameNodePOA {
     }
 
     @Override
-    public boolean file_increase(String file_path, int block_data_node ,int block_id, int free_size) {
+    public boolean file_increase(String file_path, byte[] bytes, int block_data_node ,int block_id, boolean have_free) {
         NameNodeMetaFileNode findNode = getNameNodeMetaFileNode(file_path);
         if(findNode!=null){
-            if(free_size>0){
+            if(have_free){
                 findNode.data.block_data_node[findNode.data.block_num] = block_data_node;
                 findNode.data.block_id[findNode.data.block_num] = block_id;
             }
@@ -225,6 +235,7 @@ public class NameNodeImpl extends NameNodePOA {
                 int[] new_block = alloc();
                 findNode.data.block_data_node[findNode.data.block_num] = new_block[0];
                 findNode.data.block_id[findNode.data.block_num] = new_block[1];
+                dataNodes[new_block[0]].append(new_block[1],bytes,file_path);
             }
             findNode.data.block_num++;
             return true;

@@ -5,7 +5,7 @@ package api;
 * api/NameNodePOA.java .
 * 由IDL-to-Java 编译器 (可移植), 版本 "3.2"生成
 * 从api.idl
-* 2023年10月30日 星期一 下午05时31分59秒 CST
+* 2023年11月2日 星期四 下午03时33分15秒 CST
 */
 
 public abstract class NameNodePOA extends org.omg.PortableServer.Servant
@@ -158,11 +158,12 @@ public abstract class NameNodePOA extends org.omg.PortableServer.Servant
        case 10:  // api/NameNode/file_increase
        {
          String file_path = in.read_string ();
+         byte bytes[] = api.byteArrayHelper.read (in);
          int block_data_node = in.read_long ();
          int block_id = in.read_long ();
-         int free_size = in.read_long ();
+         boolean have_free = in.read_boolean ();
          boolean $result = false;
-         $result = this.file_increase (file_path, block_data_node, block_id, free_size);
+         $result = this.file_increase (file_path, bytes, block_data_node, block_id, have_free);
          out = $rh.createReply();
          out.write_boolean ($result);
          break;

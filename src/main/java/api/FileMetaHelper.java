@@ -5,7 +5,7 @@ package api;
 * api/FileMetaHelper.java .
 * 由IDL-to-Java 编译器 (可移植), 版本 "3.2"生成
 * 从api.idl
-* 2023年10月30日 星期一 下午05时31分59秒 CST
+* 2023年11月2日 星期四 下午03时33分15秒 CST
 */
 
 abstract public class FileMetaHelper
@@ -63,13 +63,13 @@ abstract public class FileMetaHelper
             _tcOf_members0,
             null);
           _tcOf_members0 = org.omg.CORBA.ORB.init ().get_primitive_tc (org.omg.CORBA.TCKind.tk_long);
-          _tcOf_members0 = org.omg.CORBA.ORB.init ().create_array_tc (1000, _tcOf_members0 );
+          _tcOf_members0 = org.omg.CORBA.ORB.init ().create_array_tc (10000, _tcOf_members0 );
           _members0[4] = new org.omg.CORBA.StructMember (
             "block_data_node",
             _tcOf_members0,
             null);
           _tcOf_members0 = org.omg.CORBA.ORB.init ().get_primitive_tc (org.omg.CORBA.TCKind.tk_long);
-          _tcOf_members0 = org.omg.CORBA.ORB.init ().create_array_tc (1000, _tcOf_members0 );
+          _tcOf_members0 = org.omg.CORBA.ORB.init ().create_array_tc (10000, _tcOf_members0 );
           _members0[5] = new org.omg.CORBA.StructMember (
             "block_id",
             _tcOf_members0,
@@ -109,13 +109,13 @@ abstract public class FileMetaHelper
     value.writing_cookie = istream.read_long ();
     value.file_size = istream.read_long ();
     value.block_num = istream.read_long ();
-    value.block_data_node = new int[1000];
-    for (int _o0 = 0;_o0 < (1000); ++_o0)
+    value.block_data_node = new int[10000];
+    for (int _o0 = 0;_o0 < (10000); ++_o0)
     {
       value.block_data_node[_o0] = istream.read_long ();
     }
-    value.block_id = new int[1000];
-    for (int _o1 = 0;_o1 < (1000); ++_o1)
+    value.block_id = new int[10000];
+    for (int _o1 = 0;_o1 < (10000); ++_o1)
     {
       value.block_id[_o1] = istream.read_long ();
     }
@@ -131,15 +131,15 @@ abstract public class FileMetaHelper
     ostream.write_long (value.writing_cookie);
     ostream.write_long (value.file_size);
     ostream.write_long (value.block_num);
-    if (value.block_data_node.length != (1000))
+    if (value.block_data_node.length != (10000))
       throw new org.omg.CORBA.MARSHAL (0, org.omg.CORBA.CompletionStatus.COMPLETED_MAYBE);
-    for (int _i0 = 0;_i0 < (1000); ++_i0)
+    for (int _i0 = 0;_i0 < (10000); ++_i0)
     {
       ostream.write_long (value.block_data_node[_i0]);
     }
-    if (value.block_id.length != (1000))
+    if (value.block_id.length != (10000))
       throw new org.omg.CORBA.MARSHAL (0, org.omg.CORBA.CompletionStatus.COMPLETED_MAYBE);
-    for (int _i1 = 0;_i1 < (1000); ++_i1)
+    for (int _i1 = 0;_i1 < (10000); ++_i1)
     {
       ostream.write_long (value.block_id[_i1]);
     }

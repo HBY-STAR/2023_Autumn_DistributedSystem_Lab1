@@ -14,7 +14,7 @@ module api {
     interface DataNode {
         // from Client
         byteArray read(in long block_id);
-        void append(in long block_id, in byteArray bytes);
+        boolean append(in long block_id, in byteArray bytes, in string file_path);
         //long randomBlockId();
 
         // from NameNode
@@ -38,6 +38,6 @@ module api {
         boolean rename_file(in string old_file_path,in string new_file_name);
 
         // from DataNode
-        boolean file_increase(in string file_path,in long block_data_node, in long block_id, in long free_size);
+        boolean file_increase(in string file_path, in byteArray bytes,in long block_data_node, in long block_id, in boolean have_free);
     };
 };

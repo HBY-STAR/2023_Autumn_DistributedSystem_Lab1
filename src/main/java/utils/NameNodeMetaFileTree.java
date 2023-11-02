@@ -145,4 +145,14 @@ public class NameNodeMetaFileTree {
             loadTree();
         }
     }
+
+    public void renameNode(NameNodeMetaFileNode start_node,String new_name,int depth){
+        if(start_node==root){
+            return;
+        }
+        start_node.path.set(depth-1,new_name);
+        for(NameNodeMetaFileNode child : start_node.children){
+            renameNode(child,new_name,depth);
+        }
+    }
 }

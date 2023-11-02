@@ -5,7 +5,7 @@ package api;
 * api/DataNodePOA.java .
 * 由IDL-to-Java 编译器 (可移植), 版本 "3.2"生成
 * 从api.idl
-* 2023年10月30日 星期一 下午05时31分59秒 CST
+* 2023年11月2日 星期四 下午03时33分15秒 CST
 */
 
 public abstract class DataNodePOA extends org.omg.PortableServer.Servant
@@ -51,8 +51,11 @@ public abstract class DataNodePOA extends org.omg.PortableServer.Servant
        {
          int block_id = in.read_long ();
          byte bytes[] = api.byteArrayHelper.read (in);
-         this.append (block_id, bytes);
+         String file_path = in.read_string ();
+         boolean $result = false;
+         $result = this.append (block_id, bytes, file_path);
          out = $rh.createReply();
+         out.write_boolean ($result);
          break;
        }
 
