@@ -1,20 +1,25 @@
 module api {
     typedef octet byteArray[4*1024];
     struct FileMeta {
+        string file_path;
         boolean is_new;
         long writing_cookie;
         long file_size;
         long block_num;
-        long block_data_node[10000];
-        long block_id[10000];
+        long block_data_node[1000];
+        long block_id[1000];
         string creat_time;
         string modify_time;
         string access_time;
     };
+    struct ByteArrayWithLength{
+        byteArray bytes;
+        long byteNum;
+    };
     interface DataNode {
         // from Client
-        byteArray read(in long block_id);
-        boolean append(in long block_id, in byteArray bytes, in string file_path);
+        ByteArrayWithLength read(in long block_id);
+        boolean append(in long block_id, in ByteArrayWithLength byteArray, in string file_path);
         //long randomBlockId();
 
         // from NameNode
@@ -38,6 +43,6 @@ module api {
         boolean rename_file(in string old_file_path,in string new_file_name);
 
         // from DataNode
-        boolean file_increase(in string file_path, in byteArray bytes,in long block_data_node, in long block_id, in boolean have_free);
+        boolean file_increase(in string file_path, in ByteArrayWithLength byteArray, in long block_data_node, in long block_id, in boolean have_free);
     };
 };

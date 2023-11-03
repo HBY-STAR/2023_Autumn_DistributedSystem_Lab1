@@ -1,13 +1,5 @@
 package api;
 
-
-/**
-* api/FileMetaHelper.java .
-* 由IDL-to-Java 编译器 (可移植), 版本 "3.2"生成
-* 从api.idl
-* 2023年11月2日 星期四 下午03时33分15秒 CST
-*/
-
 abstract public class FileMetaHelper
 {
   private static String  _id = "IDL:api/FileMeta:1.0";
@@ -40,52 +32,57 @@ abstract public class FileMetaHelper
             return org.omg.CORBA.ORB.init().create_recursive_tc ( _id );
           }
           __active = true;
-          org.omg.CORBA.StructMember[] _members0 = new org.omg.CORBA.StructMember [9];
+          org.omg.CORBA.StructMember[] _members0 = new org.omg.CORBA.StructMember [10];
           org.omg.CORBA.TypeCode _tcOf_members0 = null;
-          _tcOf_members0 = org.omg.CORBA.ORB.init ().get_primitive_tc (org.omg.CORBA.TCKind.tk_boolean);
+          _tcOf_members0 = org.omg.CORBA.ORB.init ().create_string_tc (0);
           _members0[0] = new org.omg.CORBA.StructMember (
+            "file_path",
+            _tcOf_members0,
+            null);
+          _tcOf_members0 = org.omg.CORBA.ORB.init ().get_primitive_tc (org.omg.CORBA.TCKind.tk_boolean);
+          _members0[1] = new org.omg.CORBA.StructMember (
             "is_new",
             _tcOf_members0,
             null);
           _tcOf_members0 = org.omg.CORBA.ORB.init ().get_primitive_tc (org.omg.CORBA.TCKind.tk_long);
-          _members0[1] = new org.omg.CORBA.StructMember (
+          _members0[2] = new org.omg.CORBA.StructMember (
             "writing_cookie",
             _tcOf_members0,
             null);
           _tcOf_members0 = org.omg.CORBA.ORB.init ().get_primitive_tc (org.omg.CORBA.TCKind.tk_long);
-          _members0[2] = new org.omg.CORBA.StructMember (
+          _members0[3] = new org.omg.CORBA.StructMember (
             "file_size",
             _tcOf_members0,
             null);
           _tcOf_members0 = org.omg.CORBA.ORB.init ().get_primitive_tc (org.omg.CORBA.TCKind.tk_long);
-          _members0[3] = new org.omg.CORBA.StructMember (
+          _members0[4] = new org.omg.CORBA.StructMember (
             "block_num",
             _tcOf_members0,
             null);
           _tcOf_members0 = org.omg.CORBA.ORB.init ().get_primitive_tc (org.omg.CORBA.TCKind.tk_long);
-          _tcOf_members0 = org.omg.CORBA.ORB.init ().create_array_tc (10000, _tcOf_members0 );
-          _members0[4] = new org.omg.CORBA.StructMember (
+          _tcOf_members0 = org.omg.CORBA.ORB.init ().create_array_tc (1000, _tcOf_members0 );
+          _members0[5] = new org.omg.CORBA.StructMember (
             "block_data_node",
             _tcOf_members0,
             null);
           _tcOf_members0 = org.omg.CORBA.ORB.init ().get_primitive_tc (org.omg.CORBA.TCKind.tk_long);
-          _tcOf_members0 = org.omg.CORBA.ORB.init ().create_array_tc (10000, _tcOf_members0 );
-          _members0[5] = new org.omg.CORBA.StructMember (
+          _tcOf_members0 = org.omg.CORBA.ORB.init ().create_array_tc (1000, _tcOf_members0 );
+          _members0[6] = new org.omg.CORBA.StructMember (
             "block_id",
             _tcOf_members0,
             null);
           _tcOf_members0 = org.omg.CORBA.ORB.init ().create_string_tc (0);
-          _members0[6] = new org.omg.CORBA.StructMember (
+          _members0[7] = new org.omg.CORBA.StructMember (
             "creat_time",
             _tcOf_members0,
             null);
           _tcOf_members0 = org.omg.CORBA.ORB.init ().create_string_tc (0);
-          _members0[7] = new org.omg.CORBA.StructMember (
+          _members0[8] = new org.omg.CORBA.StructMember (
             "modify_time",
             _tcOf_members0,
             null);
           _tcOf_members0 = org.omg.CORBA.ORB.init ().create_string_tc (0);
-          _members0[8] = new org.omg.CORBA.StructMember (
+          _members0[9] = new org.omg.CORBA.StructMember (
             "access_time",
             _tcOf_members0,
             null);
@@ -105,17 +102,18 @@ abstract public class FileMetaHelper
   public static api.FileMeta read (org.omg.CORBA.portable.InputStream istream)
   {
     api.FileMeta value = new api.FileMeta ();
+    value.file_path = istream.read_string ();
     value.is_new = istream.read_boolean ();
     value.writing_cookie = istream.read_long ();
     value.file_size = istream.read_long ();
     value.block_num = istream.read_long ();
-    value.block_data_node = new int[10000];
-    for (int _o0 = 0;_o0 < (10000); ++_o0)
+    value.block_data_node = new int[1000];
+    for (int _o0 = 0;_o0 < (1000); ++_o0)
     {
       value.block_data_node[_o0] = istream.read_long ();
     }
-    value.block_id = new int[10000];
-    for (int _o1 = 0;_o1 < (10000); ++_o1)
+    value.block_id = new int[1000];
+    for (int _o1 = 0;_o1 < (1000); ++_o1)
     {
       value.block_id[_o1] = istream.read_long ();
     }
@@ -127,19 +125,20 @@ abstract public class FileMetaHelper
 
   public static void write (org.omg.CORBA.portable.OutputStream ostream, api.FileMeta value)
   {
+    ostream.write_string (value.file_path);
     ostream.write_boolean (value.is_new);
     ostream.write_long (value.writing_cookie);
     ostream.write_long (value.file_size);
     ostream.write_long (value.block_num);
-    if (value.block_data_node.length != (10000))
+    if (value.block_data_node.length != (1000))
       throw new org.omg.CORBA.MARSHAL (0, org.omg.CORBA.CompletionStatus.COMPLETED_MAYBE);
-    for (int _i0 = 0;_i0 < (10000); ++_i0)
+    for (int _i0 = 0;_i0 < (1000); ++_i0)
     {
       ostream.write_long (value.block_data_node[_i0]);
     }
-    if (value.block_id.length != (10000))
+    if (value.block_id.length != (1000))
       throw new org.omg.CORBA.MARSHAL (0, org.omg.CORBA.CompletionStatus.COMPLETED_MAYBE);
-    for (int _i1 = 0;_i1 < (10000); ++_i1)
+    for (int _i1 = 0;_i1 < (1000); ++_i1)
     {
       ostream.write_long (value.block_id[_i1]);
     }

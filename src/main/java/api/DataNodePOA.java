@@ -5,7 +5,7 @@ package api;
 * api/DataNodePOA.java .
 * 由IDL-to-Java 编译器 (可移植), 版本 "3.2"生成
 * 从api.idl
-* 2023年11月2日 星期四 下午03时33分15秒 CST
+* 2023年11月3日 星期五 下午12时28分30秒 CST
 */
 
 public abstract class DataNodePOA extends org.omg.PortableServer.Servant
@@ -40,20 +40,20 @@ public abstract class DataNodePOA extends org.omg.PortableServer.Servant
        case 0:  // api/DataNode/read
        {
          int block_id = in.read_long ();
-         byte $result[] = null;
+         api.ByteArrayWithLength $result = null;
          $result = this.read (block_id);
          out = $rh.createReply();
-         api.byteArrayHelper.write (out, $result);
+         api.ByteArrayWithLengthHelper.write (out, $result);
          break;
        }
 
        case 1:  // api/DataNode/append
        {
          int block_id = in.read_long ();
-         byte bytes[] = api.byteArrayHelper.read (in);
+         api.ByteArrayWithLength byteArray = api.ByteArrayWithLengthHelper.read (in);
          String file_path = in.read_string ();
          boolean $result = false;
-         $result = this.append (block_id, bytes, file_path);
+         $result = this.append (block_id, byteArray, file_path);
          out = $rh.createReply();
          out.write_boolean ($result);
          break;

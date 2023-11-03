@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 import java.nio.charset.StandardCharsets;
 
 public class ClientTest {
-    static Client client;
+    static ClientImpl client;
     @Before
     public void setUp(){
         client = new ClientImpl();
@@ -27,18 +27,20 @@ public class ClientTest {
         client.close(fd);
     }
 
-    @Test void testWriteFail(){
+    @Test
+    public void testWriteFail(){
         String filename = FileSystem.newFilename();
         int fd = client.open(filename,0b01);
         client.append(fd,"Lala-land".getBytes(StandardCharsets.UTF_8));
-        assertArrayEquals(client.read(fd),"".getBytes(StandardCharsets.UTF_8));
+        assertNull(client.read(fd));
         client.close(fd);
     }
 
-    @Test void testReadFail(){
+    @Test
+    public void testReadFail(){
         String filename = FileSystem.newFilename();
         int fd = client.open(filename,0b10);
-        assertNull(client.read(fd));
+        assertArrayEquals(client.read(fd),"".getBytes(StandardCharsets.UTF_8));
         client.close(fd);
     }
 }

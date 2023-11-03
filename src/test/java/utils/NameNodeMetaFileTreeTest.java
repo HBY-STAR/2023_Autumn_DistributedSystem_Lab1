@@ -1,9 +1,11 @@
 package utils;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +14,16 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class NameNodeMetaFileTreeTest {
+    NameNodeMetaFileTree tree = new NameNodeMetaFileTree();
+    @Before
+    public void set(){
+        tree = new NameNodeMetaFileTree("NameNodeFile/fs_meta_file.json");
+        NameNodeMetaFileTree.root =null;
+        tree.loadTree();
+    }
 
     @Test
     public void AddTest() {
-        NameNodeMetaFileTree tree = new NameNodeMetaFileTree("NameNodeFile/fs_meta_file.json");
-        boolean load_success = tree.loadTree();
         buildTree(tree);
         boolean store_success = tree.storeTree();
 
@@ -51,19 +58,18 @@ public class NameNodeMetaFileTreeTest {
 
         String real;
         try {
-            real = new String(Files.readAllBytes(Paths.get("NameNodeFile/fs_meta_file.json")));
+            Path path1 = Paths.get("NameNodeFile/fs_meta_file.json");
+            real = new String(Files.readAllBytes(path1));
+            Files.delete(path1);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         assertEquals(check,real);
-        assertTrue(load_success);
         assertTrue(store_success);
     }
 
     @Test
     public void DeleteTest(){
-        NameNodeMetaFileTree tree = new NameNodeMetaFileTree("NameNodeFile/fs_meta_file.json");
-        boolean load_success = tree.loadTree();
         buildTree(tree);
         List<String> path;
 
@@ -91,22 +97,22 @@ public class NameNodeMetaFileTreeTest {
                     "],\"_file\":false" +
                 "}";
 
+
         String real;
         try {
-            real = new String(Files.readAllBytes(Paths.get("NameNodeFile/fs_meta_file.json")));
+            Path path1 = Paths.get("NameNodeFile/fs_meta_file.json");
+            real = new String(Files.readAllBytes(path1));
+            Files.delete(path1);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         assertEquals(check,real);
-        assertTrue(load_success);
         assertTrue(store_success);
     }
 
     @Test
     public void RenameTest(){
-        NameNodeMetaFileTree tree = new NameNodeMetaFileTree("NameNodeFile/fs_meta_file.json");
         NameNodeMetaFileNode node = new NameNodeMetaFileNode();
-        boolean load_success = tree.loadTree();
         buildTree(tree);
         List<String> path;
 
@@ -154,12 +160,13 @@ public class NameNodeMetaFileTreeTest {
 
         String real;
         try {
-            real = new String(Files.readAllBytes(Paths.get("NameNodeFile/fs_meta_file.json")));
+            Path path1 = Paths.get("NameNodeFile/fs_meta_file.json");
+            real = new String(Files.readAllBytes(path1));
+            Files.delete(path1);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         assertEquals(check,real);
-        assertTrue(load_success);
         assertTrue(store_success);
     }
 

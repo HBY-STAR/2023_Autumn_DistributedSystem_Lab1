@@ -38,7 +38,7 @@ public class NameNodeMetaFileTree {
             root = mapper.readValue(new File(meta_file_path), NameNodeMetaFileNode.class);
             return true;
         } catch (IOException e) {
-            System.out.println("Can recognize this file");
+            System.out.println("Can't recognize this file");
             return false;
         }
     }
@@ -113,12 +113,15 @@ public class NameNodeMetaFileTree {
     }
 
     public NameNodeMetaFileNode findNode(NameNodeMetaFileNode start_node, List<String> path) {
-        if (path.size() == 0) {
+        if (path==null||path.size() == 0) {
             return start_node;
         }
         String cur_path = path.get(0);
         boolean cur_exist = false;
         NameNodeMetaFileNode cur_exist_node = new NameNodeMetaFileNode();
+        if(start_node == null ){
+            return null;
+        }
         for (NameNodeMetaFileNode child : start_node.children) {
             if (child.path.size() == 0) {
                 continue;
@@ -142,6 +145,11 @@ public class NameNodeMetaFileTree {
     public void test_and_set_tree(){
         if(root==null){
             loadTree();
+            if(root == null){
+                List<String> root_path = new ArrayList<>();
+                root_path.add("~");
+                root = new NameNodeMetaFileNode(null, root_path, false, new ArrayList<>());
+            }
         }
     }
 

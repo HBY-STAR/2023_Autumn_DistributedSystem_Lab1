@@ -5,7 +5,7 @@ package api;
 * api/_DataNodeStub.java .
 * 由IDL-to-Java 编译器 (可移植), 版本 "3.2"生成
 * 从api.idl
-* 2023年11月2日 星期四 下午03时33分15秒 CST
+* 2023年11月3日 星期五 下午12时28分30秒 CST
 */
 
 public class _DataNodeStub extends org.omg.CORBA.portable.ObjectImpl implements api.DataNode
@@ -13,14 +13,14 @@ public class _DataNodeStub extends org.omg.CORBA.portable.ObjectImpl implements 
 
 
   // from Client
-  public byte[] read (int block_id)
+  public api.ByteArrayWithLength read (int block_id)
   {
             org.omg.CORBA.portable.InputStream $in = null;
             try {
                 org.omg.CORBA.portable.OutputStream $out = _request ("read", true);
                 $out.write_long (block_id);
                 $in = _invoke ($out);
-                byte $result[] = api.byteArrayHelper.read ($in);
+                api.ByteArrayWithLength $result = api.ByteArrayWithLengthHelper.read ($in);
                 return $result;
             } catch (org.omg.CORBA.portable.ApplicationException $ex) {
                 $in = $ex.getInputStream ();
@@ -33,13 +33,13 @@ public class _DataNodeStub extends org.omg.CORBA.portable.ObjectImpl implements 
             }
   } // read
 
-  public boolean append (int block_id, byte[] bytes, String file_path)
+  public boolean append (int block_id, api.ByteArrayWithLength byteArray, String file_path)
   {
             org.omg.CORBA.portable.InputStream $in = null;
             try {
                 org.omg.CORBA.portable.OutputStream $out = _request ("append", true);
                 $out.write_long (block_id);
-                api.byteArrayHelper.write ($out, bytes);
+                api.ByteArrayWithLengthHelper.write ($out, byteArray);
                 $out.write_string (file_path);
                 $in = _invoke ($out);
                 boolean $result = $in.read_boolean ();
@@ -49,7 +49,7 @@ public class _DataNodeStub extends org.omg.CORBA.portable.ObjectImpl implements 
                 String _id = $ex.getId ();
                 throw new org.omg.CORBA.MARSHAL (_id);
             } catch (org.omg.CORBA.portable.RemarshalException $rm) {
-                return append (block_id, bytes, file_path        );
+                return append (block_id, byteArray, file_path        );
             } finally {
                 _releaseReply ($in);
             }

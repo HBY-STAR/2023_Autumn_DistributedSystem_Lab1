@@ -1,5 +1,6 @@
 package impl;
 
+import api.ByteArrayWithLength;
 import api.DataNodePOA;
 import api.NameNode;
 import api.NameNodeHelper;
@@ -20,8 +21,8 @@ import java.util.Properties;
 
 @Setter
 public class DataNodeImpl extends DataNodePOA {
-    private static final int MAX_BLOCK_NUM = 1000;
-    private static final int BLOCK_SIZE = 4096;
+    public static final int MAX_BLOCK_NUM = 1000;
+    public static final int BLOCK_SIZE = 4096;
     private int dateNodeId;
     private static NameNode nameNode;
     private static boolean nameNode_get=false;
@@ -30,23 +31,26 @@ public class DataNodeImpl extends DataNodePOA {
     private byte[] block = new byte[BLOCK_SIZE];
 
     @Override
-    public byte[] read(int block_id) {
+    public ByteArrayWithLength read(int block_id) {
         String block_file_path = getBlockFilePath(block_id);
         File blockFile = new File(block_file_path);
         block = new byte[BLOCK_SIZE];
+        ByteArrayWithLength res;
         if (blockFile.exists()) {
             try {
-                block = Files.readAllBytes(Paths.get(block_file_path));
+                byte[] valid = Files.readAllBytes(Paths.get(block_file_path));
+                System.arraycopy(valid,0,block,0,valid.length);
+                res = new ByteArrayWithLength(block,valid.length);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            return block;
+            return res;
         }
-        return null;
+        return new ByteArrayWithLength(new byte[4096],0);
     }
 
     @Override
-    public boolean append(int block_id, byte[] bytes, String file_path) {
+    public boolean append(int block_id, ByteArrayWithLength byteArray, String file_path) {
         String block_file_path = getBlockFilePath(block_id);
         File block_file = new File(block_file_path);
         block = new byte[BLOCK_SIZE];
@@ -58,22 +62,25 @@ public class DataNodeImpl extends DataNodePOA {
             int cur_len = block.length;
 
             FileWriter writer = new FileWriter(block_file, true);
-            for(int i=0;i<bytes.length;i++){
-                if(cur_len>MAX_BLOCK_NUM-1){
+            for(int i=0;i<byteArray.byteNum;i++){
+                if(cur_len>BLOCK_SIZE-1){
                     int new_block = alloc();
                     if(new_block == -1){
                         byte[] left_bytes = new byte[BLOCK_SIZE];
-                        System.arraycopy(bytes, i, left_bytes, 0, bytes.length - i);
+                        System.arraycopy(byteArray.bytes, i, left_bytes, 0, byteArray.byteNum - i);
                         writer.close();
-                        return nameNode.file_increase(file_path,left_bytes,dateNodeId,block_id,false);
+                        ByteArrayWithLength leftArray = new ByteArrayWithLength(left_bytes,byteArray.byteNum - i);
+                        return nameNode.file_increase(file_path,leftArray,dateNodeId,block_id,false);
                     }else {
-                        nameNode.file_increase(file_path,null,dateNodeId,new_block,true);
+                        byte[] fill_block = new byte[BLOCK_SIZE];
+                        ByteArrayWithLength fill = new ByteArrayWithLength(fill_block,0);
+                        nameNode.file_increase(file_path,fill,dateNodeId,new_block,true);
+                        writer.write(byteArray.bytes[i]);
                         writer = new FileWriter(getBlockFilePath(new_block),true);
-                        writer.write(bytes[i]);
                         cur_len=1;
                     }
                 }else {
-                    writer.write(bytes[i]);
+                    writer.write(byteArray.bytes[i]);
                     cur_len++;
                 }
             }

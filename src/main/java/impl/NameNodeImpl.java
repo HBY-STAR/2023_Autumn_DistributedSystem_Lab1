@@ -11,9 +11,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class NameNodeImpl extends NameNodePOA {                             
-    private static final String fs_meta_path = "NameNodeFile/NameNodeMeta";
+    private static final String fs_meta_path = "NameNodeFile/fs_meta_file.json";
     private final NameNodeMetaFileTree tree = new NameNodeMetaFileTree(fs_meta_path);
-    public static final int MAX_DATA_NODE = 5;
+    public static final int MAX_DATA_NODE = 3;
     private static final DataNode[] dataNodes = new DataNode[MAX_DATA_NODE];
     private static boolean dataNodes_get = false;
     @Override
@@ -24,7 +24,7 @@ public class NameNodeImpl extends NameNodePOA {
         if(findNode==null){
             //no such directory
             if(findDir==null){
-                return null;
+                return new FileMeta();
             }
             //create new file
             else {
@@ -33,16 +33,21 @@ public class NameNodeImpl extends NameNodePOA {
                     Random rand = new Random();
                     int writing_cookie = rand.nextInt(10000000) +10000000;
                     int [] block = alloc();
+                    int [] block_data_node = new int[1000];
+                    int [] block_id = new int[1000];
+                    block_data_node[0] = block[0];
+                    block_id[0] = block[1];
                     DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                    FileMeta new_file = new FileMeta(true,writing_cookie,0,1,new int[]{block[0]},new int[]{block[1]},
+                    FileMeta new_file = new FileMeta(filepath,true,writing_cookie,0,1,block_data_node,block_id,
                             LocalDateTime.now().format(fmt),LocalDateTime.now().format(fmt),LocalDateTime.now().format(fmt));
                     NameNodeMetaFileNode new_node = new NameNodeMetaFileNode(new_file,string_to_list(filepath),true,new ArrayList<>());
                     tree.addNode(new_node);
+                    tree.storeTree();
                     return new_file;
                 }
                 //without write mode
                 else {
-                    return null;
+                    return new FileMeta();
                 }
             }
         }
@@ -52,7 +57,7 @@ public class NameNodeImpl extends NameNodePOA {
             if(findNode.is_file){
                 //is_writing
                 if(findNode.data.writing_cookie!=0){
-                    return null;
+                    return new FileMeta();
                 }
                 //isn't_writing
                 else {
@@ -66,7 +71,7 @@ public class NameNodeImpl extends NameNodePOA {
             }
             //dir
             else {
-                return null;
+                return new FileMeta();
             }
 
         }
@@ -175,8 +180,12 @@ public class NameNodeImpl extends NameNodePOA {
         //directory exists
         else {
             int [] block = alloc();
+            int [] block_data_node = new int[1000];
+            int [] block_id = new int[1000];
+            block_data_node[0] = block[0];
+            block_id[0] = block[1];
             DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            FileMeta new_file = new FileMeta(true,0,0,1,new int[]{block[0]},new int[]{block[1]},
+            FileMeta new_file = new FileMeta(file_path,true,0,0,1,block_data_node,block_id,
                     LocalDateTime.now().format(fmt),LocalDateTime.now().format(fmt),LocalDateTime.now().format(fmt));
             NameNodeMetaFileNode new_node = new NameNodeMetaFileNode(new_file,string_to_list(file_path),true,new ArrayList<>());
             tree.addNode(new_node);
@@ -224,7 +233,7 @@ public class NameNodeImpl extends NameNodePOA {
     }
 
     @Override
-    public boolean file_increase(String file_path, byte[] bytes, int block_data_node ,int block_id, boolean have_free) {
+    public boolean file_increase(String file_path,ByteArrayWithLength byteArray,  int block_data_node ,int block_id, boolean have_free) {
         NameNodeMetaFileNode findNode = getNameNodeMetaFileNode(file_path);
         if(findNode!=null){
             if(have_free){
@@ -235,7 +244,7 @@ public class NameNodeImpl extends NameNodePOA {
                 int[] new_block = alloc();
                 findNode.data.block_data_node[findNode.data.block_num] = new_block[0];
                 findNode.data.block_id[findNode.data.block_num] = new_block[1];
-                dataNodes[new_block[0]].append(new_block[1],bytes,file_path);
+                dataNodes[new_block[0]].append(new_block[1],byteArray,file_path);
             }
             findNode.data.block_num++;
             return true;
