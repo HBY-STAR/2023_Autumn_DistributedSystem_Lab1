@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 import java.nio.charset.StandardCharsets;
 
 public class ClientTest {
-    static ClientImpl client;
+    static Client client;
     @Before
     public void setUp(){
         client = new ClientImpl();

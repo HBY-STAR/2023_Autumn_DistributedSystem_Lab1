@@ -13,12 +13,15 @@ import static impl.DataNodeImpl.MAX_BLOCK_NUM;
 import static impl.NameNodeImpl.MAX_DATA_NODE;
 
 public class ClientImpl implements Client{
+    private static final int MAXFDNUM = 64;
     private static NameNode nameNode;
     private static boolean nameNode_get=false;
     private static final DataNode[] dataNodes = new DataNode[MAX_DATA_NODE];
     private static boolean dataNodes_get = false;
 
-    private static List<FileMeta> cur_open_file_meta = new ArrayList<>();
+    private static FileMeta[] cur_open_file_meta = new FileMeta[MAXFDNUM];
+    private static boolean[] cur_fd_used = new boolean[MAXFDNUM];
+    private static int [] cur_fd_privilege = new int[MAXFDNUM];
 
     private static final int MAXFILESIZE = MAX_DATA_NODE*MAX_BLOCK_NUM*BLOCK_SIZE;
 
@@ -29,36 +32,49 @@ public class ClientImpl implements Client{
         if(Objects.equals(fileMeta.file_path, "")){
             return -1;
         }
-        int fd =cur_open_file_meta.indexOf(fileMeta);
+
+        int fd = findOpenedFile(fileMeta);
 
         if(fd < 0){
-            cur_open_file_meta.add(fileMeta);
-            fd = cur_open_file_meta.size()-1;
+            fd = findFreeFd();
+            cur_open_file_meta[fd]=fileMeta;
+            cur_fd_used[fd]=true;
+            cur_fd_privilege[fd] = mode;
         }
         return fd;
     }
 
     @Override
     public void append(int fd, byte[] bytes) {
-        if(fd<0){
+        if(fd<0 || fd>=MAXFDNUM || !cur_fd_used[fd] || (cur_fd_privilege[fd]&0b10)==0){
+            System.out.println("INFO: append failed");
             return;
         }
         GetNameNodeAndDataNode();
-        FileMeta fileMeta = cur_open_file_meta.get(fd);
+        FileMeta fileMeta = cur_open_file_meta[fd];
+        if(fileMeta.writing_cookie==0){
+            System.out.println("INFO: append not allowed");
+            return;
+        }
         if(!Objects.equals(fileMeta.file_path, "")) {
             byte [] block_bytes = new byte[4096];
             System.arraycopy(bytes, 0, block_bytes, 0, bytes.length);
             ByteArrayWithLength byteArray = new ByteArrayWithLength(block_bytes,bytes.length);
             dataNodes[fileMeta.block_data_node[fileMeta.block_num-1]].append(fileMeta.block_id[fileMeta.block_num-1],byteArray,fileMeta.file_path);
+            System.out.println("INFO: write done");
         }
     }
     @Override
     public byte[] read(int fd) {
-        if(fd<0){
+        if(fd<0 || fd>=MAXFDNUM || !cur_fd_used[fd]){
+            return null;
+        }
+        if((cur_fd_privilege[fd]&0b01)==0){
+            System.out.println("INFO: read not allowed");
             return null;
         }
         GetNameNodeAndDataNode();
-        FileMeta fileMeta = cur_open_file_meta.get(fd);
+        FileMeta fileMeta = cur_open_file_meta[fd];
         if(fileMeta.file_path.equals("")){
             return null;
         }
@@ -73,14 +89,16 @@ public class ClientImpl implements Client{
     @Override
     public void close(int fd) {
         GetNameNodeAndDataNode();
-        if(fd<0){
+        if(fd<0 || fd>=MAXFDNUM || !cur_fd_used[fd]){
+            System.out.println("INFO: close failed");
             return;
         }
-        FileMeta fileMeta = cur_open_file_meta.get(fd);
+        FileMeta fileMeta = cur_open_file_meta[fd];
         if(!fileMeta.file_path.equals("")){
             nameNode.close(fileMeta.file_path,fileMeta.writing_cookie);
         }
-        cur_open_file_meta.remove(fd);
+        cur_open_file_meta[fd] = new FileMeta();
+        cur_fd_used[fd] = false;
     }
     private static void GetNameNodeAndDataNode() {
         try{
@@ -96,14 +114,14 @@ public class ClientImpl implements Client{
 
                 if(!nameNode_get){
                     nameNode = NameNodeHelper.narrow(ncRef.resolve_str("NameNode"));
-                    System.out.println("NameNode is obtained");
+                    //System.out.println("NameNode is obtained");
                 }
                 nameNode_get=true;
 
                 if(!dataNodes_get){
                     for(int dataNodeId = 0;dataNodeId<MAX_DATA_NODE;dataNodeId++){
                         dataNodes[dataNodeId] = DataNodeHelper.narrow(ncRef.resolve_str("DataNode"+dataNodeId));
-                        System.out.println("DataNode"+dataNodeId+" is obtained");
+                        //System.out.println("DataNode"+dataNodeId+" is obtained");
                     }
                 }
                 dataNodes_get=true;
@@ -111,5 +129,23 @@ public class ClientImpl implements Client{
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private int findFreeFd(){
+        for(int i=0;i<MAXFDNUM;i++){
+            if(!cur_fd_used[i]){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private int findOpenedFile(FileMeta find){
+        for(int i=0;i<MAXFDNUM;i++){
+            if(find == cur_open_file_meta[i]){
+                return i;
+            }
+        }
+        return -1;
     }
 }

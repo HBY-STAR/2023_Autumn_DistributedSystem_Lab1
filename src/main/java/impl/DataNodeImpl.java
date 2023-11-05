@@ -9,6 +9,7 @@ import lombok.Setter;
 import org.omg.CORBA.ORB;
 import org.omg.CosNaming.NamingContextExt;
 import org.omg.CosNaming.NamingContextExtHelper;
+import utils.NameNodeMetaFileNode;
 
 import java.io.File;
 import java.io.FileReader;
@@ -106,6 +107,7 @@ public class DataNodeImpl extends DataNodePOA {
 
     @Override
     public int alloc() {
+        loadMeta();
         int find_free=-1;
         for(int i=0;i<MAX_BLOCK_NUM;i++){
             if(!block_used[i]){
@@ -127,6 +129,7 @@ public class DataNodeImpl extends DataNodePOA {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        saveMeta();
         return find_free;
     }
 
@@ -140,10 +143,12 @@ public class DataNodeImpl extends DataNodePOA {
 
     @Override
     public boolean free(int block_id) {
+        loadMeta();
         block_used[block_id]=false;
         String brock_file_path = getBlockFilePath(block_id);
         File blockFile = new File(brock_file_path);
         if (blockFile.exists()) {
+            saveMeta();
             return blockFile.delete();
         }
         return false;
@@ -167,6 +172,40 @@ public class DataNodeImpl extends DataNodePOA {
             nameNode_get=true;
         }catch (Exception e){
             e.printStackTrace();
+        }
+    }
+    private boolean loadMeta(){
+        try {
+            // 创建ObjectMapper对象
+            ObjectMapper mapper = new ObjectMapper();
+            // 从JSON文件读取对象
+            File check = new File(getMetaPath());
+            if(!check.exists()){
+                if(check.createNewFile()){
+                    System.out.println("Create New File");
+                    return true;
+                }
+                else {
+                    System.out.println("Create new file failed");
+                    return false;
+                }
+
+            }
+            block_used = mapper.readValue(new File(getMetaPath()),boolean[].class);
+            return true;
+        } catch (IOException e) {
+            System.out.println("Can't recognize this file");
+            return false;
+        }
+    }
+    private boolean saveMeta(){
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.writeValue(new File(getMetaPath()), block_used);
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }
