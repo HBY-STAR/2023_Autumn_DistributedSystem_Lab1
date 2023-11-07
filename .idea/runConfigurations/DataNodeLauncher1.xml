@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="DataNodeLauncher1" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="server.DataNodeLauncher" />
+    <module name="DistriLab1" />
+    <option name="PROGRAM_PARAMETERS" value="1" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

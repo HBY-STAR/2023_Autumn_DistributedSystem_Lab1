@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class ClientShell {
     private static final Client client = new ClientImpl();
     public static void main(String[] args) {
-        System.out.println("Hello! Input help to get some information");
+        System.out.println("Hello! Input command to operate");
         System.out.print(">>>");
         Scanner scanner = new Scanner(System.in);
         do {

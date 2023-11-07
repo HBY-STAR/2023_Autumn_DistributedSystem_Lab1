@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="NameNodeLauncher" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="server.NameNodeLauncher" />
+    <module name="DistriLab1" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

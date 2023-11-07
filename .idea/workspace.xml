@@ -4,392 +4,113 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b16450a-76df-435d-9c77-afb10c6f459d" name="更改" comment="shell finish">
+    <list default="true" id="a492fa20-f521-4c0b-a584-a68133756c69" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/ClientShell.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/ClientTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/DataNodeLauncher0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/DataNodeLauncher1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/DataNodeLauncher2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/DataNodeTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/NameNodeLauncher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/NameNodeMetaFileTreeTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/NameNodeTest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-chat-corba" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode0/NodeMeta0.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode0/block0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode0/block1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode1/NodeMeta1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode1/block0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode2/NodeMeta2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NameNodeFile/fs_meta_file.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NameNodeFile/tree_test_buildtree_file.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/orb.db/NC0" beforeDir="false" afterPath="$PROJECT_DIR$/orb.db/NC0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api.idl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api.idl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/FileMeta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/FileMeta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ClientShell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ClientShell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/ClientImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/ClientImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/NameNodeImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/NameNodeImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/DataNodeLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/DataNodeLauncher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/ClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/ClientTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/NameNodeMetaFileNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/NameNodeMetaFileNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/utils/NameNodeMetaFileTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/NameNodeMetaFileTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/ByteArrayWithLength.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/ByteArrayWithLengthHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/ByteArrayWithLengthHolder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/DataNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/DataNodeHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/DataNodeHolder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/DataNodeOperations.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/DataNodePOA.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/FileMeta.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/FileMetaHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/FileMetaHolder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/NameNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/NameNodeHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/NameNodeHolder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/NameNodeOperations.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/NameNodePOA.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/_DataNodeStub.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/_NameNodeStub.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/byteArrayHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api/byteArrayHolder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/client/ClientShell.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/impl/ClientImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/impl/DataNodeImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/impl/NameNodeImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/DataNodeLauncher.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/NameNodeLauncher.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/test/ClientTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/test/DataNodeTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/test/NameNodeTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/FileDesc.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/FileSystem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/NameNodeMetaFileNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/NameNodeMetaFileTree.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/utils/NameNodeMetaFileTreeTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-        <option value="JUnit4 Test Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2X1bEPtaJSwF5qPGYjU896RviY4" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Downloaded.Files.Path.Enabled": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "last_opened_file_path": "C:/Users/21714/Desktop/Code/SoftwareDesign/lab1/SoftwareDesignLab1",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "模块",
-    "project.structure.proportion": "0.15",
+    "project.structure.last.edited": "SDK",
+    "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.55402297",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "vue.rearranger.settings.migration": "true"
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="api" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\21714\Desktop\Code\DistributedSystem\lab\DistributedSystemLab1\lab1\NameNodeFile" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="impl" />
-      <recent name="utils" />
-    </key>
-  </component>
-  <component name="RunManager" selected="应用程序.ClientShell">
-    <configuration name="ClientShell" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="client.ClientShell" />
-      <module name="DistriLab1" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DataNodeLauncher0" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="server.DataNodeLauncher" />
-      <module name="DistriLab1" />
-      <option name="PROGRAM_PARAMETERS" value="0" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DataNodeLauncher1" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="server.DataNodeLauncher" />
-      <module name="DistriLab1" />
-      <option name="PROGRAM_PARAMETERS" value="1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DataNodeLauncher2" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="server.DataNodeLauncher" />
-      <module name="DistriLab1" />
-      <option name="PROGRAM_PARAMETERS" value="2" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NameNodeLauncher" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="server.NameNodeLauncher" />
-      <module name="DistriLab1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ClientTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DistriLab1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.ClientTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DataNodeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DistriLab1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.DataNodeTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NameNodeMetaFileTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DistriLab1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="utils" />
-      <option name="MAIN_CLASS_NAME" value="utils.NameNodeMetaFileTreeTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NameNodeMetaFileTreeTest.AddTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DistriLab1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="utils" />
-      <option name="MAIN_CLASS_NAME" value="utils.NameNodeMetaFileTreeTest" />
-      <option name="METHOD_NAME" value="AddTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NameNodeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DistriLab1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.NameNodeTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="应用程序.DataNodeLauncher2">
     <list>
+      <item itemvalue="JUnit.NameNodeMetaFileTreeTest" />
       <item itemvalue="JUnit.ClientTest" />
       <item itemvalue="JUnit.DataNodeTest" />
-      <item itemvalue="JUnit.NameNodeMetaFileTreeTest" />
-      <item itemvalue="JUnit.NameNodeMetaFileTreeTest.AddTest" />
       <item itemvalue="JUnit.NameNodeTest" />
+      <item itemvalue="应用程序.ClientShell" />
       <item itemvalue="应用程序.NameNodeLauncher" />
       <item itemvalue="应用程序.DataNodeLauncher0" />
       <item itemvalue="应用程序.DataNodeLauncher1" />
       <item itemvalue="应用程序.DataNodeLauncher2" />
-      <item itemvalue="应用程序.ClientShell" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.ClientTest" />
-        <item itemvalue="JUnit.DataNodeTest" />
-        <item itemvalue="JUnit.NameNodeTest" />
-        <item itemvalue="JUnit.NameNodeMetaFileTreeTest" />
-        <item itemvalue="JUnit.NameNodeMetaFileTreeTest.AddTest" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
-  <component name="SvnConfiguration">
-    <configuration>C:\Users\21714\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="默认任务">
-      <changelist id="8b16450a-76df-435d-9c77-afb10c6f459d" name="更改" comment="" />
-      <created>1697799421892</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1697799421892</updated>
-      <workItem from="1697799423809" duration="315000" />
-      <workItem from="1697799788688" duration="509000" />
-      <workItem from="1697800336622" duration="48000" />
-      <workItem from="1697800416837" duration="3244000" />
-      <workItem from="1698039254900" duration="7143000" />
-      <workItem from="1698055636371" duration="10130000" />
-      <workItem from="1698080506396" duration="67000" />
-      <workItem from="1698080590813" duration="988000" />
-      <workItem from="1698081607710" duration="1091000" />
-      <workItem from="1698117634222" duration="3668000" />
-      <workItem from="1698161158135" duration="5662000" />
-      <workItem from="1698228234384" duration="1310000" />
-      <workItem from="1698278138642" duration="5982000" />
-      <workItem from="1698315069576" duration="1472000" />
-      <workItem from="1698371931919" duration="10001000" />
-      <workItem from="1698575229741" duration="2967000" />
-      <workItem from="1698630529535" duration="1812000" />
-      <workItem from="1698637051629" duration="902000" />
-      <workItem from="1698644932510" duration="11745000" />
-      <workItem from="1698661084775" duration="207000" />
-      <workItem from="1698675262504" duration="4084000" />
-      <workItem from="1698714434672" duration="270000" />
-      <workItem from="1698717108287" duration="2182000" />
-      <workItem from="1698743248617" duration="3049000" />
-      <workItem from="1698803201518" duration="599000" />
-      <workItem from="1698900386009" duration="12522000" />
-      <workItem from="1698919874544" duration="1189000" />
-      <workItem from="1698921165757" duration="493000" />
-      <workItem from="1698927288010" duration="620000" />
-      <workItem from="1698928020404" duration="1951000" />
-      <workItem from="1698976396887" duration="10608000" />
-      <workItem from="1698995588565" duration="8428000" />
-      <workItem from="1699102255814" duration="7164000" />
-      <workItem from="1699174187152" duration="5164000" />
-      <workItem from="1699179727602" duration="1524000" />
-      <workItem from="1699195056531" duration="42000" />
-      <workItem from="1699195225297" duration="1859000" />
-    </task>
-    <task id="LOCAL-00001" summary="generate">
-      <created>1698042774448</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1698042774448</updated>
-    </task>
-    <task id="LOCAL-00002" summary="tree">
-      <created>1698575635962</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1698575635962</updated>
-    </task>
-    <task id="LOCAL-00003" summary="design: nameNode &amp; dataNode">
-      <created>1698659712087</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1698659712087</updated>
-    </task>
-    <task id="LOCAL-00004" summary="function in nameNode">
-      <created>1698679712732</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1698679712732</updated>
-    </task>
-    <task id="LOCAL-00005" summary="tests left only">
-      <created>1698911241323</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1698911241323</updated>
-    </task>
-    <task id="LOCAL-00006" summary="tree test finish">
-      <created>1698917300834</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1698917300834</updated>
-    </task>
-    <task id="LOCAL-00007" summary="basic tests finish">
-      <created>1699000033958</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1699000033958</updated>
-    </task>
-    <task id="LOCAL-00008" summary="shell finish">
-      <created>1699195091437</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1699195091437</updated>
-    </task>
-    <task id="LOCAL-00009" summary="shell finish">
-      <created>1699196534068</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1699196534068</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
     <servers />
-  </component>
-  <component name="TerminalProjectNonSharedOptionsProvider">
-    <envs>
-      <env key="JAVA_HOME" value="D:\jdk-10" />
-    </envs>
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="generate" />
-    <MESSAGE value="tree" />
-    <MESSAGE value="update api.idl" />
-    <MESSAGE value="design: nameNode &amp; dataNode" />
-    <MESSAGE value="function in nameNode" />
-    <MESSAGE value="tests left only" />
-    <MESSAGE value="tree test finish" />
-    <MESSAGE value="basic tests finish" />
-    <MESSAGE value="shell finish" />
-    <option name="LAST_COMMIT_MESSAGE" value="shell finish" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="org.omg.CosNaming.NamingContextPackage.AlreadyBound" package="org.omg.CosNaming.NamingContextPackage" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-    <watches-manager>
-      <configuration name="JUnit">
-        <watch expression="fileInfos[0]" />
-        <watch expression="findNode.is_file" language="JAVA" />
-      </configuration>
-    </watches-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

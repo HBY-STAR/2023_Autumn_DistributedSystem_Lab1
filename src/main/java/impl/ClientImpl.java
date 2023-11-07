@@ -99,6 +99,7 @@ public class ClientImpl implements Client{
         }
         cur_open_file_meta[fd] = new FileMeta();
         cur_fd_used[fd] = false;
+        System.out.println("INFO: fd "+fd+" closed");
     }
     private static void GetNameNodeAndDataNode() {
         try{

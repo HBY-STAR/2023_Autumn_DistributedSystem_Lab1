@@ -40,7 +40,7 @@ public class ClientTest {
     public void testReadFail(){
         String filename = FileSystem.newFilename();
         int fd = client.open(filename,0b10);
-        assertArrayEquals(client.read(fd),"".getBytes(StandardCharsets.UTF_8));
+        assertNull(client.read(fd));
         client.close(fd);
     }
 }

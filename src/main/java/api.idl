@@ -1,36 +1,37 @@
 module api {
     typedef octet byteArray[4*1024];
-    struct FileMeta {
-        string file_path;
-        boolean is_new;
-        long writing_cookie;
-        long file_size;
-        long block_num;
-        long block_data_node[1000];
-        long block_id[1000];
-        string creat_time;
-        string modify_time;
-        string access_time;
+    struct FileMeta {           //文件在NameNode中存储的元数据
+        string file_path;           //文件路径
+        boolean is_new;             //是否为新建文件
+        long writing_cookie;        //分配给用户的写识别号
+        long file_size;             //文件大小，目前无用处，因为可以直接通过blockNum计算
+        long block_num;             //文件使用的block数量
+        long block_data_node[1000]; //文件使用的block所在的DataNode
+        long block_id[1000];        //文件使用的block所在的DataNode的blockId
+        string creat_time;          //创建时间
+        string modify_time;         //修改时间
+        string access_time;         //访问时间
     };
-    struct ByteArrayWithLength{
-        byteArray bytes;
-        long byteNum;
+    struct ByteArrayWithLength{ //带长度的byteArray,解决返回值必须定长的问题
+        byteArray bytes;            //返回的block，固定为4096个字节
+        long byteNum;               //有效字节数
     };
     interface DataNode {
-        // from Client
+        //用户发起的读请求
         ByteArrayWithLength read(in long block_id);
+        //用户发起的写请求
         boolean append(in long block_id, in ByteArrayWithLength byteArray, in string file_path);
-        //long randomBlockId();
 
-        // from NameNode
-        long check_free_size();
-        long alloc();
-        boolean free(in long block_id);
+        // From NameNode
+        long check_free_size();         //NameNode发起的检查空余block数量的请求
+        long alloc();                   //NameNode发起的分配block请求
+        boolean free(in long block_id); //NameNode发起的释放block请求
     };
     interface NameNode {
-        // from Client
-        FileMeta open(in string file_path, in long mode);
-        boolean close(in string file_path, in long writing_cookie);
+        // From Client
+        FileMeta open(in string file_path, in long mode);           //用户发起的打开文件请求
+        boolean close(in string file_path, in long writing_cookie); //用户发起的关闭文件请求
+
         // 目录操作
         boolean mk_dir(in string dir_path);
         boolean del_dir(in string dir_path);
@@ -43,6 +44,8 @@ module api {
         boolean rename_file(in string old_file_path,in string new_file_name);
 
         // from DataNode
-        boolean file_increase(in string file_path, in ByteArrayWithLength byteArray, in long block_data_node, in long block_id, in boolean have_free);
+        // 用户发出的写请求写的字节数超过了一个block，DataNode告知NameNode并交由NameNode处理。
+        boolean file_increase(in string file_path, in ByteArrayWithLength byteArray,
+        in long block_data_node, in long block_id, in boolean have_free);
     };
 };

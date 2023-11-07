@@ -61,10 +61,14 @@ public class NameNodeImpl extends NameNodePOA {
                 }
                 //isn't_writing
                 else {
+                    DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    findNode.data.access_time=LocalDateTime.now().format(fmt);
+
                     //with write mode
                     if((mode & 0b10)!=0){
                         Random rand = new Random();
                         findNode.data.writing_cookie = rand.nextInt(10000000) +10000000;
+                        findNode.data.modify_time=LocalDateTime.now().format(fmt);
                     }
                     return findNode.data;
                 }

@@ -12,9 +12,6 @@ import org.omg.PortableServer.POAHelper;
 
 import java.util.Properties;
 
-import static client.ClientShell.MAX_DATA_NODE;
-
-
 public class DataNodeLauncher {
 
     public static void main(String[] args) {

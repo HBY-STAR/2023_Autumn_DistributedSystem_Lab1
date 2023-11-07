@@ -1,13 +1,6 @@
 package api;
 
 
-/**
-* api/FileMeta.java .
-* ��IDL-to-Java ������ (����ֲ), �汾 "3.2"����
-* ��api.idl
-* 2023��11��3�� ������ ����12ʱ28��30�� CST
-*/
-
 public final class FileMeta implements org.omg.CORBA.portable.IDLEntity
 {
   public String file_path = "";

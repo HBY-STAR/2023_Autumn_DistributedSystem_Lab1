@@ -19,6 +19,13 @@ public class NameNodeMetaFileTreeTest {
     public void set(){
         tree = new NameNodeMetaFileTree("NameNodeFile/fs_meta_file.json");
         NameNodeMetaFileTree.root =null;
+        try {
+            Path path = Paths.get("NameNodeFile/fs_meta_file.json");
+            if(Files.exists(path))
+                Files.delete(path);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         tree.loadTree();
     }
 
