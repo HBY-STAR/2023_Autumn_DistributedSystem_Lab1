@@ -1,5 +1,3 @@
-package test;
-
 import api.ByteArrayWithLength;
 import api.DataNode;
 import api.FileMeta;

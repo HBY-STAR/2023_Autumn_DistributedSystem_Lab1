@@ -4,71 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a492fa20-f521-4c0b-a584-a68133756c69" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/ClientShell.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/ClientTest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/DataNodeLauncher0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/DataNodeLauncher1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/DataNodeLauncher2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/DataNodeTest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/NameNodeLauncher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/NameNodeMetaFileTreeTest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/NameNodeTest.xml" afterDir="false" />
+    <list default="true" id="a492fa20-f521-4c0b-a584-a68133756c69" name="更改" comment="finish">
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/ClientTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/ClientTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/DataNodeTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/DataNodeTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/NameNodeTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/NameNodeTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode0/NodeMeta0.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode0/block0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode0/block1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode1/NodeMeta1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode1/block0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodeFile/DataNode2/NodeMeta2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NameNodeFile/fs_meta_file.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NameNodeFile/tree_test_buildtree_file.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/orb.db/NC0" beforeDir="false" afterPath="$PROJECT_DIR$/orb.db/NC0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api.idl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api.idl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/FileMeta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/FileMeta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ClientShell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ClientShell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/NameNodeOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NameNodeOperations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/ClientImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/ClientImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/DataNodeImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/DataNodeImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/NameNodeImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/NameNodeImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/DataNodeLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/DataNodeLauncher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/ClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/ClientTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/NameNodeMetaFileNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/NameNodeMetaFileNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/utils/NameNodeMetaFileTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/NameNodeMetaFileTreeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/ByteArrayWithLength.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/ByteArrayWithLengthHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/ByteArrayWithLengthHolder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/DataNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/DataNodeHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/DataNodeHolder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/DataNodeOperations.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/DataNodePOA.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/FileMeta.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/FileMetaHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/FileMetaHolder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/NameNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/NameNodeHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/NameNodeHolder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/NameNodeOperations.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/NameNodePOA.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/_DataNodeStub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/_NameNodeStub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/byteArrayHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/byteArrayHolder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/client/ClientShell.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/impl/ClientImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/impl/DataNodeImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/impl/NameNodeImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/DataNodeLauncher.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/NameNodeLauncher.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/test/ClientTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/test/DataNodeTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/test/NameNodeTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/FileDesc.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/FileSystem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/NameNodeMetaFileNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/NameNodeMetaFileTree.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/utils/NameNodeMetaFileTreeTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/ClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ClientTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/DataNodeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/DataNodeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/NameNodeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/NameNodeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,36 +31,111 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectId" id="2XqZs9WXnS8UbCuHEmuqHId1xNx" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/21714/Desktop/Code/DistributedSystem/lab/DistributedSystemLab1/lab1",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "SDK",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.55402297",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "preferences.fileTypes",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="应用程序.DataNodeLauncher2">
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.NameNodeTest">
+    <configuration name="ClientTest.testWriteTwoBlock" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DistriLab1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value=".*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ClientTest" />
+      <option name="METHOD_NAME" value="testWriteTwoBlock" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="JUnit.NameNodeMetaFileTreeTest" />
       <item itemvalue="JUnit.ClientTest" />
       <item itemvalue="JUnit.DataNodeTest" />
       <item itemvalue="JUnit.NameNodeTest" />
+      <item itemvalue="JUnit.ClientTest.testWriteTwoBlock" />
       <item itemvalue="应用程序.ClientShell" />
       <item itemvalue="应用程序.NameNodeLauncher" />
       <item itemvalue="应用程序.DataNodeLauncher0" />
       <item itemvalue="应用程序.DataNodeLauncher1" />
       <item itemvalue="应用程序.DataNodeLauncher2" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ClientTest.testWriteTwoBlock" />
+      </list>
+    </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="finish">
+      <created>1699348205144</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1699348205144</updated>
+    </task>
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="a492fa20-f521-4c0b-a584-a68133756c69" name="更改" comment="finish" />
+      <created>1699358777775</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699358777775</updated>
+      <workItem from="1699358779557" duration="1323000" />
+      <workItem from="1699410693449" duration="19000" />
+      <workItem from="1699783685511" duration="5595000" />
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="finish" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish" />
   </component>
 </project>

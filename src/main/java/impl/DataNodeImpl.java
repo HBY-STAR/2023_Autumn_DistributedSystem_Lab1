@@ -22,7 +22,7 @@ import java.util.Properties;
 
 @Setter
 public class DataNodeImpl extends DataNodePOA {
-    public static final int MAX_BLOCK_NUM = 1000;
+    public static final int MAX_BLOCK_NUM = 100;
     public static final int BLOCK_SIZE = 4096;
     private int dateNodeId;
     private static NameNode nameNode;
@@ -52,6 +52,7 @@ public class DataNodeImpl extends DataNodePOA {
 
     @Override
     public boolean append(int block_id, ByteArrayWithLength byteArray, String file_path) {
+        GetNameNode();
         String block_file_path = getBlockFilePath(block_id);
         File block_file = new File(block_file_path);
         block = new byte[BLOCK_SIZE];
@@ -76,8 +77,8 @@ public class DataNodeImpl extends DataNodePOA {
                         byte[] fill_block = new byte[BLOCK_SIZE];
                         ByteArrayWithLength fill = new ByteArrayWithLength(fill_block,0);
                         nameNode.file_increase(file_path,fill,dateNodeId,new_block,true);
-                        writer.write(byteArray.bytes[i]);
                         writer = new FileWriter(getBlockFilePath(new_block),true);
+                        writer.write(byteArray.bytes[i]);
                         cur_len=1;
                     }
                 }else {

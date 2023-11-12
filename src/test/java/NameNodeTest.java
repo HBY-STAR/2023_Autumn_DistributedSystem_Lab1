@@ -1,5 +1,3 @@
-package test;
-
 import api.FileMeta;
 import impl.NameNodeImpl;
 import org.junit.Before;

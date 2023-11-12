@@ -12,7 +12,7 @@ import java.util.*;
 
 public class NameNodeImpl extends NameNodePOA {                             
     private static final String fs_meta_path = "NameNodeFile/fs_meta_file.json";
-    private final NameNodeMetaFileTree tree = new NameNodeMetaFileTree(fs_meta_path);
+    private static final NameNodeMetaFileTree tree = new NameNodeMetaFileTree(fs_meta_path);
     public static final int MAX_DATA_NODE = 3;
     private static final DataNode[] dataNodes = new DataNode[MAX_DATA_NODE];
     private static boolean dataNodes_get = false;

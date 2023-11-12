@@ -50,6 +50,7 @@ public class ClientImpl implements Client{
             System.out.println("INFO: append failed");
             return;
         }
+        updateFd(fd);
         GetNameNodeAndDataNode();
         FileMeta fileMeta = cur_open_file_meta[fd];
         if(fileMeta.writing_cookie==0){
@@ -73,17 +74,19 @@ public class ClientImpl implements Client{
             System.out.println("INFO: read not allowed");
             return null;
         }
+        updateFd(fd);
         GetNameNodeAndDataNode();
         FileMeta fileMeta = cur_open_file_meta[fd];
         if(fileMeta.file_path.equals("")){
             return null;
         }
-        String string = "";
+        StringBuilder string = new StringBuilder();
         for(int i=0;i<fileMeta.block_num;i++){
            ByteArrayWithLength byteArray =  dataNodes[fileMeta.block_data_node[i]].read(fileMeta.block_id[i]);
-           string = new String(byteArray.bytes,0, byteArray.byteNum,StandardCharsets.UTF_8);
+           String temp_string = new String(byteArray.bytes,0, byteArray.byteNum,StandardCharsets.UTF_8);
+           string.append(temp_string);
         }
-        return string.getBytes(StandardCharsets.UTF_8);
+        return string.toString().getBytes(StandardCharsets.UTF_8);
     }
 
     @Override
@@ -101,6 +104,20 @@ public class ClientImpl implements Client{
         cur_fd_used[fd] = false;
         System.out.println("INFO: fd "+fd+" closed");
     }
+
+    public void updateFd(int fd){
+        GetNameNodeAndDataNode();
+        if(fd<0 || fd>=MAXFDNUM || !cur_fd_used[fd]){
+            return;
+        }
+        FileMeta fileMeta = cur_open_file_meta[fd];
+        if(!fileMeta.file_path.equals("")){
+            nameNode.close(fileMeta.file_path,fileMeta.writing_cookie);
+        }
+        cur_open_file_meta[fd] = nameNode.open(fileMeta.file_path,cur_fd_privilege[fd]);
+    }
+
+
     private static void GetNameNodeAndDataNode() {
         try{
             if(!nameNode_get||!dataNodes_get){

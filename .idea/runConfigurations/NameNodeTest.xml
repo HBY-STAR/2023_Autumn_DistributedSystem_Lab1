@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="NameNodeTest" type="JUnit" factoryName="JUnit">
     <module name="DistriLab1" />
-    <option name="PACKAGE_NAME" value="test" />
-    <option name="MAIN_CLASS_NAME" value="test.NameNodeTest" />
+    <option name="PACKAGE_NAME" value="" />
+    <option name="MAIN_CLASS_NAME" value="NameNodeTest" />
     <option name="METHOD_NAME" value="" />
     <option name="TEST_OBJECT" value="class" />
     <method v="2">
